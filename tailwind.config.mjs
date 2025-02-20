@@ -10,7 +10,14 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        accent: "#463636"
       },
+      fontFamily: {
+        logo: 'Old Standard TT, serif'
+      },
+      fontSize: {
+        "2xs": "10px"
+      }
     },
   },
   plugins: [],

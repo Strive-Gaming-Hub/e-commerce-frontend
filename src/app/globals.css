@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav-link-animation {
+    @apply w-0 absolute h-[1px] bg-accent -bottom-1 group-hover:w-full duration-200 ease-in-out transition-all;
+}
+.badge {
+    @apply bg-red-500 text-white text-xs px-2 py-1 rounded ml-2;
+}

@@ -24,7 +24,7 @@ export default function Page3() {
     }, []);
 
     return (
-        <div className="relative w-full overflow-hidden" style={{height: "calc(100vh - 100px)"}}>
+        <div className="relative w-full overflow-hidden h-screen">
             <video
                 className="absolute top-0 left-0 w-full h-full object-cover"
                 autoPlay
@@ -61,7 +61,7 @@ export default function Page3() {
                 </div>
 
                 <div className="overflow-hidden">
-                    <button className="px-4 py-2 md:px-6 md:py-3 border border-white text-white font-semibold text-xs">
+                    <button className="carousel-btn border-white text-white hover:bg-white hover:text-black">
                         SHOP DRESSES
                     </button>
                 </div>

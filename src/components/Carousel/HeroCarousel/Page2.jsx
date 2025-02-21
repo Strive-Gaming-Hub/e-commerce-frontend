@@ -24,7 +24,7 @@ export default function Page2() {
     }, []);
 
     return (
-        <div className="relative w-full overflow-hidden" style={{height: "calc(100vh - 100px)"}}>
+        <div className="relative w-full overflow-hidden h-screen">
             <div
                 className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
                 style={{ backgroundImage: "url('/hero/slide2.webp')" }}
@@ -32,7 +32,7 @@ export default function Page2() {
 
             <div
                 ref={contentRef}
-                className="relative z-10 flex flex-col items-center justify-center h-full text-center text-black px-6 space-y-4 bg-white bg-opacity-50"
+                className="relative z-10 flex flex-col items-center justify-center h-full text-center text-black px-6 space-y-4"
             >
                 <div className="overflow-hidden">
                     <p className="text-xs md:text-sm tracking-widest uppercase font-medium">
@@ -56,7 +56,7 @@ export default function Page2() {
                 </div>
 
                 <div className="overflow-hidden">
-                    <button className="px-4 py-2 md:px-6 md:py-3 border border-black text-black font-semibold text-xs">
+                    <button className="carousel-btn border-black text-black hover:bg-black hover:text-white">
                         SHOP SALE
                     </button>
                 </div>

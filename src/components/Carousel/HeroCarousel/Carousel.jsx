@@ -45,7 +45,7 @@ export default function Carousel() {
     const PrevPage = pages[prevNum];
 
     return (
-        <div className="relative w-full overflow-hidden h-screen" style={{height: "calc(100vh - 100px)"}}>
+        <div className="relative w-full overflow-hidden h-screen">
             <div ref={prevRef} className="absolute w-full h-full">
                 <PrevPage />
             </div>

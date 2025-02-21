@@ -29,12 +29,7 @@ const menuItems = [
             { label: "Best Sellers", children: [] },
             { label: "Trending", children: [] },
         ],
-    },
-    {
-        label: "Pre-built templates",
-        children: [{ label: "Modern" }, { label: "Classic" }],
-    },
-    { label: "Product styles", children: [{ label: "Minimal" }, { label: "Luxury" }] },
+    }
 ];
 
 export default menuItems;

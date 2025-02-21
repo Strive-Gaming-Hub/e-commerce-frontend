@@ -24,7 +24,7 @@ export default function Page1() {
     }, []);
 
     return (
-        <div className="relative w-full overflow-hidden" style={{height: "calc(100vh - 100px)"}}>
+        <div className="relative w-full overflow-hidden h-screen">
             <div
                 className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
                 style={{ backgroundImage: "url('/hero/slide1.webp')" }}
@@ -53,7 +53,7 @@ export default function Page1() {
                     <button className="px-4 py-2 md:px-6 md:py-3 border border-white text-white font-semibold uppercase text-xs">
                         SHOP MEN
                     </button>
-                    <button className="px-4 py-2 md:px-6 md:py-3 border border-white text-white font-semibold uppercase text-xs">
+                    <button className="carousel-btn border-white text-white hover:bg-white hover:text-black">
                         SHOP WOMEN
                     </button>
                 </div>

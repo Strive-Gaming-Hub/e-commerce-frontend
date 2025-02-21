@@ -16,9 +16,9 @@ const Navbar = () => {
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > lastScrollY) {
-                setIsVisible(false); // Hide when scrolling down
+                setIsVisible(false);
             } else {
-                setIsVisible(true); // Show when scrolling up
+                setIsVisible(true);
             }
             setLastScrollY(window.scrollY);
         };
@@ -30,6 +30,18 @@ const Navbar = () => {
         };
     }, [lastScrollY]);
 
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [isMenuOpen]);
+
     return (
         <>
             <div className="hidden md:block">
@@ -37,8 +49,8 @@ const Navbar = () => {
             </div>
 
             <header
-                className={`w-full border-b bg-white fixed top-0 left-0 z-50 transition-transform duration-300 ${
-                    isVisible ? "translate-y-0" : "-translate-y-full"
+                className={`w-full border-b bg-white fixed top-0 md:top-9 left-0 z-50 transition-transform duration-300 ${
+                    isMenuOpen ? "-translate-y-full" : isVisible ? "translate-y-0" : "-translate-y-full"
                 }`}
             >
                 <div className="w-full flex items-center justify-between py-2 px-6 md:px-10">
@@ -63,10 +75,10 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <MobileMenu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
-
                 <DesktopMenu />
             </header>
+
+            <MobileMenu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
         </>
     );
 };

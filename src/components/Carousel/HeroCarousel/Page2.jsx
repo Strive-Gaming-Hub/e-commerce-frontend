@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import Button from "@/components/Button";
 
 export default function Page2() {
     const contentRef = useRef(null);
@@ -56,9 +57,7 @@ export default function Page2() {
                 </div>
 
                 <div className="overflow-hidden">
-                    <button className="carousel-btn border-black text-black hover:bg-black hover:text-white">
-                        SHOP SALE
-                    </button>
+                    <Button text="Shop Sale" className="border-black text-black hover:bg-black hover:text-white" />
                 </div>
             </div>
         </div>

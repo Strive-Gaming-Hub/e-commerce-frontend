@@ -54,7 +54,7 @@ export default function Carousel() {
                 <CurrentPage />
             </div>
 
-            <div className="absolute bottom-10 w-full flex items-center justify-center gap-3 md:gap-5">
+            <div className="absolute bottom-20 w-full flex items-center justify-center gap-3 md:gap-5">
                 {Array.from({ length: pages.length }).map((_, i) =>
                     carouselNum === i ? (
                         <Loader key={i} />

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import Button from "@/components/Button";
 
 export default function Page1() {
     const contentRef = useRef(null);
@@ -50,12 +51,8 @@ export default function Page1() {
                 </div>
 
                 <div className="overflow-hidden flex gap-4">
-                    <button className="px-4 py-2 md:px-6 md:py-3 border border-white text-white font-semibold uppercase text-xs">
-                        SHOP MEN
-                    </button>
-                    <button className="carousel-btn border-white text-white hover:bg-white hover:text-black">
-                        SHOP WOMEN
-                    </button>
+                    <Button text="Shop Men" className="border-white text-white hover:bg-white hover:text-black" />
+                    <Button text="Shop Women" className="border-white text-white hover:bg-white hover:text-black" />
                 </div>
             </div>
         </div>

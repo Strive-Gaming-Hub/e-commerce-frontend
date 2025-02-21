@@ -1,28 +1,43 @@
-"use client";
-
 import { useState } from "react";
 import { Tabs } from "@mantine/core";
 
 const TabNavigation = ({ tabsData, cardsData, renderCard }) => {
     const [activeTab, setActiveTab] = useState(tabsData[0].id);
 
+    const renderTabsList = () => (
+        tabsData.map((tab) => (
+            <Tabs.Tab
+                key={tab.id}
+                value={tab.id}
+                className={`text-sm font-semibold tracking-wide pb-2 transition-colors min-w-max snap-start ${
+                    activeTab === tab.id ? "text-black border-b-2 border-black" : "text-gray-400"
+                }`}
+            >
+                {tab.label}
+            </Tabs.Tab>
+        ))
+    );
+
     return (
         <div className="w-full">
-            <div className="w-full flex items-center justify-center">
+            <div className="w-full">
                 <Tabs color="rgba(0,0,0,1)" value={activeTab} onChange={setActiveTab} className="mt-6 w-full">
-                    <div className="w-full overflow-x-auto custom-scrollbar pb-3">
-                        <Tabs.List className="flex md:justify-center space-x-4 md:space-x-8 w-max md:w-full border-b border-gray-200 px-4">
-                            {tabsData.map((tab) => (
-                                <Tabs.Tab
-                                    key={tab.id}
-                                    value={tab.id}
-                                    className={`text-sm font-semibold tracking-wide pb-2 transition-colors min-w-max ${
-                                        activeTab === tab.id ? "text-black border-b-2 border-black" : "text-gray-400"
-                                    }`}
-                                >
-                                    {tab.label}
-                                </Tabs.Tab>
-                            ))}
+                    <div className="block md:hidden overflow-x-auto custom-scrollbar">
+                        <Tabs.List
+                            className="flex space-x-4 w-[max-content] border-b border-gray-200 px-4
+                                       whitespace-nowrap scroll-smooth snap-x snap-mandatory"
+                            style={{ WebkitOverflowScrolling: "touch" }}
+                        >
+                            {renderTabsList()}
+                        </Tabs.List>
+                    </div>
+
+                    <div className="hidden md:flex justify-center">
+                        <Tabs.List
+                            className="flex space-x-8 w-[max-content] border-b border-gray-200 px-4
+                                       whitespace-nowrap"
+                        >
+                            {renderTabsList()}
                         </Tabs.List>
                     </div>
                 </Tabs>

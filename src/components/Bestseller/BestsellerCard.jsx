@@ -50,8 +50,8 @@ const BestsellerCard = ({ product }) => {
                     {product.tags.map((tag, index) => (
                         <span
                             key={index}
-                            className={`w-fit bg-white text-black text-xs sm:text-sm font-semibold px-2 py-1 ${
-                                tag.toLowerCase() === "sale" && "bg-red-500 text-white"
+                            className={`w-fit bg-white text-black text-2xs font-semibold px-2 ${
+                                tag.toLowerCase() === "sale" && "bg-red-600 text-white"
                             } ${tag.includes("%") && "text-red-500"}`}
                         >
                             {tag}

@@ -14,7 +14,7 @@ const tabs = [
 
 const BestSellerSection = () => {
     return (
-        <ProductsContainer highlightText="INVEST IN STYLE" title="Buy Quality, Style With Ease All Year.">
+        <ProductsContainer ctaText="Shop Bestsellers" highlightText="INVEST IN STYLE" title="Buy Quality, Style With Ease All Year.">
             <TabNavigation
                 tabsData={tabs}
                 cardsData={bestSellerData}

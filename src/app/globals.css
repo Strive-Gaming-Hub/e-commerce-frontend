@@ -12,7 +12,7 @@
 }
 
 .carousel-btn {
-    @apply px-4 py-2 md:px-6 md:py-3 font-semibold text-xs border duration-200 ease-in-out transition-all;
+    @apply uppercase px-4 py-2 md:px-6 md:py-3 font-semibold text-xs border duration-200 ease-in-out transition-all;
 }
 
 .custom-scrollbar::-webkit-scrollbar {

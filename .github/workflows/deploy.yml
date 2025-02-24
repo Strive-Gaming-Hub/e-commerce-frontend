@@ -3,7 +3,7 @@ name: Deploy Next.js to EC2
 on:
   push:
     branches:
-      - main  # Change if needed
+      - main  # Change to your deployment branch if needed
 
 jobs:
   deploy:
@@ -24,6 +24,18 @@ jobs:
         run: |
           ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
             cd ~/e-commerce-frontend
+
+            # Load NVM
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+            # Use default Node.js version
+            nvm use default
+
+            # Verify node, npm, pm2
+            node -v
+            npm -v
+            pm2 -v
 
             # Pull latest code
             git reset --hard

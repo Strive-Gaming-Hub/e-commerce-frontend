@@ -3,6 +3,7 @@ import LimitedOffer from "@/components/LimitedOffer/LimitedOffer";
 import CategoryContainer from "@/components/Categories/CategoryContainer";
 import Marquee from "@/components/Marquee";
 import BestSellerSection from "@/components/Sections/BestSellerSection";
+import ProductsSection from "@/components/ProductsSection/Section";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
           <CategoryContainer />
           <Marquee />
           <BestSellerSection />
+          <ProductsSection />
       </div>
   );
 }

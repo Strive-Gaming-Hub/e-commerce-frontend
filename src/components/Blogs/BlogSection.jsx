@@ -33,12 +33,12 @@ const BlogSection = () => {
     return (
         <section className="w-full py-12 px-6">
             <div className="max-w-screen-2xl mx-auto mb-8">
-                <h2 className="text-3xl font-semibold">From The Journal</h2>
+                <h2 className="text-3xl font-medium font-logo">From The Journal</h2>
                 <p className="text-gray-500">Latest news from Ascension!</p>
             </div>
 
             <div className="max-w-screen-2xl mx-auto">
-                <div className="flex overflow-x-auto md:overflow-hidden gap-6 snap-x scroll-smooth custom-scrollbar">
+                <div className="flex overflow-x-auto md:overflow-hidden gap-6 snap-x scroll-smooth custom-scrollbar md:scrollbar-hide">
                     {blogPosts.map((post) => (
                         <div key={post.id} className="shrink-0 w-[90%] sm:w-[50%] md:w-1/2 lg:w-1/3">
                             <BlogCard post={post} />
@@ -47,7 +47,7 @@ const BlogSection = () => {
                 </div>
             </div>
 
-            <div className="w-full flex items-center justify-center">
+            <div className="w-full flex items-center justify-center mt-6">
                 <Button text="View All Posts" className="border-black text-black hover:bg-black hover:text-white" />
             </div>
         </section>

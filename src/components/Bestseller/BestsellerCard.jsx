@@ -51,7 +51,7 @@ const BestsellerCard = ({ product }) => {
                         <span
                             key={index}
                             className={`w-fit bg-white text-black text-2xs font-semibold px-2 ${
-                                tag.toLowerCase() === "sale" && "bg-red-600 text-white"
+                                tag.toLowerCase() === "sale" && "bg-red-500 text-white"
                             } ${tag.includes("%") && "text-red-500"}`}
                         >
                             {tag}

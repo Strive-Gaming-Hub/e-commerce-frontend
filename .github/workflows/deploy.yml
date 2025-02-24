@@ -3,7 +3,7 @@ name: Deploy Next.js to EC2
 on:
   push:
     branches:
-      - main
+      - main  # Change if needed
 
 jobs:
   deploy:
@@ -16,18 +16,28 @@ jobs:
       - name: Setup SSH Key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy to EC2
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
             cd ~/e-commerce-frontend
+
+            # Pull latest code
             git reset --hard
             git pull origin main
+
+            # Install dependencies
             npm install
+
+            # Build the project
             npm run build
+
+            # Restart the app with PM2
             pm2 restart nextjs-app || pm2 start npm --name "nextjs-app" -- start
+
+            # Save PM2 process list
             pm2 save
           EOF

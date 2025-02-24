@@ -45,11 +45,11 @@ const Navbar = () => {
     return (
         <>
             <div className="hidden md:block">
-                <TopBar />
+                {/*<TopBar />*/}
             </div>
 
             <header
-                className={`w-full border-b bg-white fixed top-0 md:top-9 left-0 z-50 transition-transform duration-300 ${
+                className={`w-full border-b bg-white fixed top-0 left-0 z-50 transition-transform duration-300 ${
                     isMenuOpen ? "-translate-y-full" : isVisible ? "translate-y-0" : "-translate-y-full"
                 }`}
             >

@@ -1,0 +1,36 @@
+name: Deploy Next.js to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Deploy to EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
+            cd ~/e-commerce-frontend
+
+            # Pull latest code from GitHub
+            git reset --hard
+            git pull origin main
+
+            # Install dependencies
+            npm install
+
+            # Build the project
+            npm run build
+
+            # Restart the Next.js app using PM2
+            pm2 restart nextjs-app || pm2 start npm --name "nextjs-app" -- start
+
+            # Save PM2 process list
+            pm2 save
+          EOF

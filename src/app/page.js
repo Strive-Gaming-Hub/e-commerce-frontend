@@ -5,6 +5,7 @@ import Marquee from "@/components/Marquee";
 import BestSellerSection from "@/components/Sections/BestSellerSection";
 import ProductsSection from "@/components/ProductsSection/Section";
 import ReviewList from "@/components/Reviews/ReviewList";
+import FeaturesSection from "@/components/Features/FeaturesSection";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
           <BestSellerSection />
           <ProductsSection />
           <ReviewList />
+          <FeaturesSection />
       </div>
   );
 }

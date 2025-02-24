@@ -7,6 +7,7 @@ import ProductsSection from "@/components/ProductsSection/Section";
 import ReviewList from "@/components/Reviews/ReviewList";
 import FeaturesSection from "@/components/Features/FeaturesSection";
 import FeaturedModelsList from "@/components/FeaturedModels/FeaturedModelsList";
+import BlogSection from "@/components/Blogs/BlogSection";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
           <ProductsSection />
           <FeaturedModelsList />
           <ReviewList />
+          <BlogSection />
           <FeaturesSection />
       </div>
   );

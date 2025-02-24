@@ -6,6 +6,7 @@ import BestSellerSection from "@/components/Sections/BestSellerSection";
 import ProductsSection from "@/components/ProductsSection/Section";
 import ReviewList from "@/components/Reviews/ReviewList";
 import FeaturesSection from "@/components/Features/FeaturesSection";
+import FeaturedModelsList from "@/components/FeaturedModels/FeaturedModelsList";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
           <Marquee />
           <BestSellerSection />
           <ProductsSection />
+          <FeaturedModelsList />
           <ReviewList />
           <FeaturesSection />
       </div>

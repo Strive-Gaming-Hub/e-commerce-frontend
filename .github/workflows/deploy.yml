@@ -13,24 +13,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+
       - name: Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.EC2_HOST }} << 'EOF'
             cd ~/e-commerce-frontend
-
-            # Pull latest code from GitHub
             git reset --hard
             git pull origin main
-
-            # Install dependencies
             npm install
-
-            # Build the project
             npm run build
-
-            # Restart the Next.js app using PM2
             pm2 restart nextjs-app || pm2 start npm --name "nextjs-app" -- start
-
-            # Save PM2 process list
             pm2 save
           EOF

@@ -1,4 +1,3 @@
-import React from "react";
 import FeatureCard from "@/components/Features/FeatureCard";
 import { featuresData } from "@/components/Features/featuresData";
 

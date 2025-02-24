@@ -4,6 +4,7 @@ import CategoryContainer from "@/components/Categories/CategoryContainer";
 import Marquee from "@/components/Marquee";
 import BestSellerSection from "@/components/Sections/BestSellerSection";
 import ProductsSection from "@/components/ProductsSection/Section";
+import ReviewList from "@/components/Reviews/ReviewList";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
           <Marquee />
           <BestSellerSection />
           <ProductsSection />
+          <ReviewList />
       </div>
   );
 }

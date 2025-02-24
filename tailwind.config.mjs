@@ -17,6 +17,9 @@ export default {
       },
       fontSize: {
         "2xs": "10px"
+      },
+      maxWidth: {
+        "2xs": "16rem"
       }
     },
   },

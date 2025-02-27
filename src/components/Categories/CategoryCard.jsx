@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const CategoryCard = ({ category }) => {
     return (
-        <div className="relative min-w-2/5 sm:min-w-[50%] md:w-full rounded-none overflow-hidden group cursor-pointer">
+        <Link href={category.link} className="relative min-w-2/5 sm:min-w-[50%] md:w-full rounded-none overflow-hidden group cursor-pointer">
             <div className="relative w-full h-80 overflow-hidden">
                 <Image
                     src={category.image}
@@ -21,7 +22,7 @@ const CategoryCard = ({ category }) => {
                     <p className="text-xs font-semibold">{category.count}</p>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

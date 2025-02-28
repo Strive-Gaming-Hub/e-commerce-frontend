@@ -9,6 +9,7 @@ const bestSellerData = {
             tags: ["BESTSELLER", "NEW ARRIVAL"],
             colors: ["#F4C2C2", "#000000"],
             images: ["/image1.jpg", "/image2.jpg", "/image3.jpg"],
+            url: "/collections/bestsellers/1"
         },
         {
             id: 2,
@@ -19,36 +20,7 @@ const bestSellerData = {
             tags: ["SALE", "NEW ARRIVAL"],
             colors: ["#000000", "#8B4513"],
             images: ["/dress1.jpg", "/dress2.jpg", "/dress3.jpg"],
-        },
-        {
-            id: 200,
-            brand: "AURELIA WEAR",
-            name: "Embroidered Black Mini Dress",
-            price: "$184.00",
-            discountPrice: "$164.50",
-            tags: ["SALE", "NEW ARRIVAL"],
-            colors: ["#000000", "#8B4513"],
-            images: ["/dress1.jpg", "/dress2.jpg", "/dress3.jpg"],
-        },
-        {
-            id: 260,
-            brand: "AURELIA WEAR",
-            name: "Embroidered Black Mini Dress",
-            price: "$184.00",
-            discountPrice: "$164.50",
-            tags: ["SALE", "NEW ARRIVAL"],
-            colors: ["#000000", "#8B4513"],
-            images: ["/dress1.jpg", "/dress2.jpg", "/dress3.jpg"],
-        },
-        {
-            id: 290,
-            brand: "AURELIA WEAR",
-            name: "Embroidered Black Mini Dress",
-            price: "$184.00",
-            discountPrice: "$164.50",
-            tags: ["SALE", "NEW ARRIVAL"],
-            colors: ["#000000", "#8B4513"],
-            images: ["/dress1.jpg", "/dress2.jpg", "/dress3.jpg"],
+            url: "/collections/bestsellers/2"
         },
         {
             id: 3,
@@ -59,6 +31,7 @@ const bestSellerData = {
             tags: ["TRENDING"],
             colors: ["#F0E68C", "#006400", "#000000"],
             images: ["/midi1.jpg", "/midi2.jpg", "/midi3.jpg"],
+            url: "/collections/bestsellers/3"
         },
         {
             id: 4,
@@ -69,6 +42,7 @@ const bestSellerData = {
             tags: ["BESTSELLER", "20% OFF"],
             colors: ["#5C4033", "#800080"],
             images: ["/trousers1.jpg", "/trousers2.jpg", "/trousers3.jpg"],
+            url: "/collections/bestsellers/4"
         },
         {
             id: 5,
@@ -79,7 +53,8 @@ const bestSellerData = {
             tags: ["SALE"],
             colors: ["#F5F5DC", "#D2B48C"],
             images: ["/blazer1.jpg", "/blazer2.jpg", "/blazer3.jpg"],
-        },
+            url: "/collections/bestsellers/5"
+        }
     ],
     bottoms: [
         {
@@ -91,6 +66,7 @@ const bestSellerData = {
             tags: ["BESTSELLER", "LIMITED"],
             colors: ["#800000", "#C0C0C0"],
             images: ["/bottom1.jpg", "/bottom2.jpg", "/bottom3.jpg"],
+            url: "/collections/bottoms/6"
         },
         {
             id: 7,
@@ -101,6 +77,7 @@ const bestSellerData = {
             tags: ["TRENDING"],
             colors: ["#000000"],
             images: ["/bottom4.jpg", "/bottom5.jpg", "/bottom6.jpg"],
+            url: "/collections/bottoms/7"
         },
         {
             id: 8,
@@ -111,27 +88,8 @@ const bestSellerData = {
             tags: ["SALE"],
             colors: ["#708090"],
             images: ["/bottom7.jpg", "/bottom8.jpg", "/bottom9.jpg"],
-        },
-        {
-            id: 9,
-            brand: "IVY & SILK",
-            name: "Brown Corduroy Pants",
-            price: "$190.00",
-            discountPrice: null,
-            tags: ["BESTSELLER"],
-            colors: ["#8B4513"],
-            images: ["/bottom10.jpg", "/bottom11.jpg", "/bottom12.jpg"],
-        },
-        {
-            id: 10,
-            brand: "BENSON & BELLE",
-            name: "Linen Wide Pants",
-            price: "$135.00",
-            discountPrice: "$120.00",
-            tags: ["NEW ARRIVAL"],
-            colors: ["#FAEBD7"],
-            images: ["/bottom13.jpg", "/bottom14.jpg", "/bottom15.jpg"],
-        },
+            url: "/collections/bottoms/8"
+        }
     ],
     tops: [
         {
@@ -143,6 +101,7 @@ const bestSellerData = {
             tags: ["BESTSELLER"],
             colors: ["#FFFFFF"],
             images: ["/top1.jpg", "/top2.jpg", "/top3.jpg"],
+            url: "/collections/tops/11"
         },
         {
             id: 12,
@@ -153,37 +112,8 @@ const bestSellerData = {
             tags: ["SALE"],
             colors: ["#000000"],
             images: ["/top4.jpg", "/top5.jpg", "/top6.jpg"],
-        },
-        {
-            id: 13,
-            brand: "GLINT & GLEAM",
-            name: "Pink Satin Camisole",
-            price: "$50.00",
-            discountPrice: null,
-            tags: ["NEW ARRIVAL"],
-            colors: ["#FFC0CB"],
-            images: ["/top7.jpg", "/top8.jpg", "/top9.jpg"],
-        },
-        {
-            id: 14,
-            brand: "BENSON & BELLE",
-            name: "Printed Button-Up Shirt",
-            price: "$90.00",
-            discountPrice: null,
-            tags: ["TRENDING"],
-            colors: ["#ADD8E6"],
-            images: ["/top10.jpg", "/top11.jpg", "/top12.jpg"],
-        },
-        {
-            id: 15,
-            brand: "IVY & SILK",
-            name: "Beige Oversized Sweater",
-            price: "$140.00",
-            discountPrice: "$120.00",
-            tags: ["SALE"],
-            colors: ["#D2B48C"],
-            images: ["/top13.jpg", "/top14.jpg", "/top15.jpg"],
-        },
+            url: "/collections/tops/12"
+        }
     ],
     outerwear: [
         {
@@ -195,6 +125,7 @@ const bestSellerData = {
             tags: ["BESTSELLER"],
             colors: ["#000000"],
             images: ["/outer1.jpg", "/outer2.jpg", "/outer3.jpg"],
+            url: "/collections/outerwear/16"
         },
         {
             id: 17,
@@ -205,38 +136,9 @@ const bestSellerData = {
             tags: ["SALE"],
             colors: ["#D2B48C"],
             images: ["/outer4.jpg", "/outer5.jpg", "/outer6.jpg"],
-        },
-        {
-            id: 18,
-            brand: "GLINT & GLEAM",
-            name: "White Faux Fur Jacket",
-            price: "$280.00",
-            discountPrice: "$250.00",
-            tags: ["NEW ARRIVAL"],
-            colors: ["#FFFFFF"],
-            images: ["/outer7.jpg", "/outer8.jpg", "/outer9.jpg"],
-        },
-        {
-            id: 19,
-            brand: "IVY & SILK",
-            name: "Green Puffer Jacket",
-            price: "$180.00",
-            discountPrice: null,
-            tags: ["TRENDING"],
-            colors: ["#228B22"],
-            images: ["/outer10.jpg", "/outer11.jpg", "/outer12.jpg"],
-        },
-        {
-            id: 20,
-            brand: "BENSON & BELLE",
-            name: "Navy Peacoat",
-            price: "$320.00",
-            discountPrice: "$280.00",
-            tags: ["LIMITED"],
-            colors: ["#000080"],
-            images: ["/outer13.jpg", "/outer14.jpg", "/outer15.jpg"],
-        },
-    ],
+            url: "/collections/outerwear/17"
+        }
+    ]
 };
 
 export default bestSellerData;

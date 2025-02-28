@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import Link from "next/link";
 
 const BestsellerCard = ({ product }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -20,16 +21,14 @@ const BestsellerCard = ({ product }) => {
     };
 
     return (
-        <div
+        <Link href={product.url || "#"}
             className="group relative w-full min-w-[180px] sm:min-w-[250px] md:min-w-[280px] lg:min-w-[300px] flex-grow"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            {/* Image Container */}
             <div className="relative w-full h-64 sm:h-80 md:h-96 bg-gray-300 flex items-center justify-center text-gray-600 text-sm sm:text-lg overflow-hidden">
                 Photo Goes Here
 
-                {/* Previous Button */}
                 <button
                     className={`absolute left-2 p-2 transition-opacity duration-300 ${
                         isHovered ? "opacity-100" : "opacity-0"
@@ -39,7 +38,6 @@ const BestsellerCard = ({ product }) => {
                     <FaChevronLeft className="text-sm sm:text-lg" />
                 </button>
 
-                {/* Next Button */}
                 <button
                     className={`absolute right-2 p-2 transition-opacity duration-300 ${
                         isHovered ? "opacity-100" : "opacity-0"
@@ -49,7 +47,6 @@ const BestsellerCard = ({ product }) => {
                     <FaChevronRight className="text-sm sm:text-lg" />
                 </button>
 
-                {/* Tags */}
                 <div className="absolute top-3 left-3 flex flex-col space-y-1">
                     {product.tags.map((tag, index) => (
                         <span
@@ -64,13 +61,11 @@ const BestsellerCard = ({ product }) => {
                 </div>
             </div>
 
-            {/* Product Info */}
             <div className="mt-3">
                 <p className="text-2xs sm:text-xs font-thin text-gray-600 uppercase text-left">{product.brand}</p>
 
                 <p className="text-left text-sm sm:text-base font-medium">{product.name}</p>
 
-                {/* Pricing */}
                 <div className="flex gap-2">
                     {product.discountPrice ? (
                         <>
@@ -82,7 +77,6 @@ const BestsellerCard = ({ product }) => {
                     )}
                 </div>
 
-                {/* Color Options */}
                 <div className="relative mt-2 h-6 transition-all">
                     {product.colors.map((color, index) => (
                         <span
@@ -99,7 +93,7 @@ const BestsellerCard = ({ product }) => {
                     ))}
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

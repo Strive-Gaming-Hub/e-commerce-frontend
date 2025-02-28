@@ -18,7 +18,7 @@ const ProductsContainer = ({ highlightText, title, subtitle, children, ctaText, 
             {subtitle && <p className="text-sm text-gray-600 mt-2">{subtitle}</p>}
 
             {children && <div className="my-6">{children}</div>}
-            <Button text={ctaText} onClick={()=>router.push(ctaUrl)} className="border-black text-black hover:bg-black hover:text-white" />
+            {ctaText && <Button text={ctaText} onClick={()=>router.push(ctaUrl)} className="border-black text-black hover:bg-black hover:text-white" />}
         </section>
     );
 };

@@ -1,5 +1,9 @@
 import ProductGallery from "@/components/ProductGallery";
 import ProductDetails from "@/components/ProductDetails";
+import ProductsContainer from "@/components/ProductsContainer";
+import CardContainer from "@/components/ProductsSection/CardContainer";
+import BestsellerCard from "@/components/Bestseller/BestsellerCard";
+import APlusSection from "@/components/Sections/APlusSection";
 
 export default function Page({params}) {
 
@@ -12,6 +16,10 @@ export default function Page({params}) {
             </div>
         </div>
         <hr className="my-4" />
+        <APlusSection />
+        <ProductsContainer title="You may also like" subtitle="Combine your style with these products">
+            <CardContainer renderCard={(product) => <BestsellerCard key={product.id} product={product} />}></CardContainer>
+        </ProductsContainer>
     </>
     )
 }

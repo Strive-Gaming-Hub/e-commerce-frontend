@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*{
+    font-family: 'Inter Tight', serif;
+}
 
 .nav-link-animation {
     @apply w-0 absolute h-[1px] bg-accent -bottom-1 group-hover:w-full duration-200 ease-in-out transition-all;

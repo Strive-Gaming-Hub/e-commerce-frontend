@@ -47,7 +47,7 @@ const FilterSidebar = () => {
     ];
 
     return (
-        <div className="w-full sticky top-0 max-w-xs bg-white text-black font-sans p-4 space-y-6 border-r">
+        <div className="hidden md:block w-[250px] sticky top-0 max-w-xs bg-white text-black p-4 space-y-6 border-r">
             <PriceFilter
                 label="Price"
                 highestPrice={648}

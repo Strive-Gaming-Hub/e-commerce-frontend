@@ -130,7 +130,7 @@ export const Footer = () => {
                             width={40}
                             height={20}
                             fit="contain"
-                            className="object-contain"
+                            className="object-cover h-8 w-auto"
                         />
                     ))}
                 </Group>

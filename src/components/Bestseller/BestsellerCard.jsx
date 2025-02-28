@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import Link from "next/link";
 
 const BestsellerCard = ({ product }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -20,12 +21,12 @@ const BestsellerCard = ({ product }) => {
     };
 
     return (
-        <div
-            className="w-full sm:w-72 group relative"
+        <Link href={product.url || "#"}
+            className="group relative w-full min-w-[180px] sm:min-w-[250px] md:min-w-[280px] lg:min-w-[300px] flex-grow"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <div className="relative w-full h-80 sm:h-96 bg-gray-300 flex items-center justify-center text-gray-600 text-sm sm:text-lg overflow-hidden">
+            <div className="relative w-full h-64 sm:h-80 md:h-96 bg-gray-300 flex items-center justify-center text-gray-600 text-sm sm:text-lg overflow-hidden">
                 Photo Goes Here
 
                 <button
@@ -92,7 +93,7 @@ const BestsellerCard = ({ product }) => {
                     ))}
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

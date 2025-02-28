@@ -5,8 +5,8 @@ import { FiShoppingBag, FiUser } from "react-icons/fi";
 import { HiOutlineMenu } from "react-icons/hi";
 import MobileMenu from "./MobileMenu";
 import DesktopMenu from "./DesktopMenu";
-import TopBar from "./TopBar";
 import { CiSearch } from "react-icons/ci";
+import Link from "next/link";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -64,7 +64,9 @@ const Navbar = () => {
                             <CiSearch className="text-stone-500" />
                         </div>
                         <CiSearch className="block md:hidden w-6 h-6 cursor-pointer" />
-                        <h1 className="text-4xl font-logo">Ascension</h1>
+                        <Link href="/">
+                            <h1 className="text-4xl font-logo">Ascension</h1>
+                        </Link>
                         <div className="flex items-center gap-4">
                             <FiUser className="cursor-pointer text-lg" />
                             <div className="relative">

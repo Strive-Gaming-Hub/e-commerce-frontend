@@ -53,11 +53,10 @@ export const footerData = {
         { label: "EUR €", value: "eur" },
     ],
     paymentMethods: [
-        { src: "/icons/visa.png", alt: "Visa" },
-        { src: "/icons/mastercard.png", alt: "Mastercard" },
-        { src: "/icons/amex.png", alt: "American Express" },
-        { src: "/icons/paypal.png", alt: "PayPal" },
-        { src: "/icons/discover.png", alt: "Discover" },
+        { src: "/footer/1.png", alt: "Visa" },
+        { src: "/footer/2.png", alt: "Mastercard" },
+        { src: "/footer/3.png", alt: "American Express" },
+        { src: "/footer/4.png", alt: "PayPal" },
     ],
     copyright: `© ${new Date().getFullYear()} Ascension main. All rights reserved.`,
 };

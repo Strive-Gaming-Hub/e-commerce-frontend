@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*{
+    font-family: 'Inter Tight', serif;
+}
 
 .nav-link-animation {
     @apply w-0 absolute h-[1px] bg-accent -bottom-1 group-hover:w-full duration-200 ease-in-out transition-all;
@@ -31,4 +36,60 @@
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+.custom-range {
+    -webkit-appearance: none;
+    background: transparent;
+    width: 100%;
+    cursor: pointer;
+}
+
+.custom-range::-webkit-slider-runnable-track {
+    height: 4px;
+    background-color: #000;
+    border-radius: 0;
+}
+
+.custom-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    background: #fff;
+    margin-top: -6px;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.custom-range::-moz-range-track {
+    height: 4px;
+    background-color: #000;
+    border-radius: 0;
+}
+
+.custom-range::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.custom-range::-ms-track {
+    height: 4px;
+    background-color: #000;
+    border-radius: 0;
+    border: 0;
+    color: transparent;
+}
+
+.custom-range::-ms-thumb {
+    height: 16px;
+    width: 16px;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 0;
+    cursor: pointer;
+    margin-top: 0;
 }

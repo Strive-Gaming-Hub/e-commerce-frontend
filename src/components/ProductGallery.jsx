@@ -25,7 +25,7 @@ export default function ProductGallery() {
     }, [index]);
 
     return (
-        <div className="flex flex-col lg:flex-row gap-4 items-center lg:items-start w-full">
+        <div className="flex flex-col-reverse lg:flex-row gap-4 items-center lg:items-start w-full">
             <div className="flex lg:flex-col flex-row gap-2">
                 {images.map((img, idx) => (
                     <Image
@@ -34,8 +34,13 @@ export default function ProductGallery() {
                         key={idx}
                         src={img}
                         alt={`Thumbnail ${idx + 1}`}
-                        className={`w-20 h-20 object-cover cursor-pointer border-2 transition-transform duration-300 ${mainImage === img ? 'border-black scale-105' : 'border-transparent'}`}
-                        onClick={() => {setMainImage(img); setIndex(idx);}}
+                        className={`w-20 h-20 object-cover cursor-pointer border-2 transition-transform duration-300 ${
+                            mainImage === img ? "border-black scale-105" : "border-transparent"
+                        }`}
+                        onClick={() => {
+                            setMainImage(img);
+                            setIndex(idx);
+                        }}
                     />
                 ))}
             </div>

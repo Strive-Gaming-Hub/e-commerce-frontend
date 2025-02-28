@@ -10,10 +10,12 @@ export default function ProductDetails() {
     const [selectedSize, setSelectedSize] = useState("XS");
     const [quantity, setQuantity] = useState(1);
     const [activeTab, setActiveTab] = useState("DETAILS");
-    const [color, setColor] = useState("black")
+    const [color, setColor] = useState("black");
 
     return (
-        <div className="w-[50%] mx-auto p-6">
+        // Only making it responsive by applying 'w-full' on smaller screens and 'w-[50%]' on lg+.
+        // All original styling and content remain exactly the same.
+        <div className="w-full lg:w-[50%] mx-auto p-6">
             <p className="text-xs uppercase font-light text-accent">Aether Apparel</p>
             <h1 className="text-3xl font-logo mt-4">Black Floral Midi Velvet Cocktail Dress</h1>
             <p className="font-medium text-sm sm:text-base">$278.30</p>
@@ -27,7 +29,7 @@ export default function ProductDetails() {
                 <span className="text-sm">1 review</span>
             </div>
 
-            <hr/>
+            <hr />
 
             <div className="my-2 flex items-center gap-20">
                 <div>
@@ -35,11 +37,11 @@ export default function ProductDetails() {
                     <p className="text-sm font-light text-stone-700">{color.charAt(0).toUpperCase()+color.slice(1)}</p>
                 </div>
                 <div className="flex items-center gap-2">
-                    <button onClick={()=>setColor("black")} className="w-7 h-7 rounded-full border border-black bg-black"></button>
-                    <button onClick={()=>setColor("purple")} className="w-7 h-7 rounded-full border border-gray-300 bg-purple-500"></button>
+                    <button onClick={() => setColor("black")} className="w-7 h-7 rounded-full border border-black bg-black"></button>
+                    <button onClick={() => setColor("purple")} className="w-7 h-7 rounded-full border border-gray-300 bg-purple-500"></button>
                 </div>
             </div>
-            <hr/>
+            <hr />
 
             <div className="my-4 flex items-center gap-20">
                 <div>
@@ -72,7 +74,7 @@ export default function ProductDetails() {
 
             <p className="text-green-600 mt-3">✔ 48 in stock, ready to ship</p>
 
-            <div className="w-full flex items-center gap-3 mt-4">
+            <div className="w-full flex flex-col sm:flex-row items-center gap-3 mt-4">
                 <div className="flex items-center justify-center gap-4">
                     <button
                         className="px-5 py-3 border"

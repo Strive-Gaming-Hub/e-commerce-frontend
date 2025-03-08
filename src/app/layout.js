@@ -1,19 +1,16 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/Header/Navbar";
-import '@mantine/core/styles.css';
-import { ColorSchemeScript, MantineProvider, mantineHtmlProps } from '@mantine/core';
-import Footer from "@/components/Footer/Footer";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
+import ClientLayout from "./clientLayout";
+import { ColorSchemeScript,mantineHtmlProps } from "@mantine/core";
+import {Inter} from "next/font/google"
 
 export const metadata = {
   title: "Shopstar",
   description: "SAAS based e-commerce software",
 };
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
 
 export default function RootLayout({ children }) {
   return (
@@ -25,11 +22,7 @@ export default function RootLayout({ children }) {
     <body
         className={`${inter.variable} antialiased`}
     >
-      <MantineProvider withGlobalClasses>
-        <Navbar />
-        {children}
-        <Footer />
-      </MantineProvider>
+      <ClientLayout>{children}</ClientLayout>
     </body>
     </html>
   );

@@ -1,17 +1,25 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { FiShoppingBag, FiUser } from "react-icons/fi";
+import { FiShoppingBag, FiUser,FiLogOut } from "react-icons/fi";
 import { HiOutlineMenu } from "react-icons/hi";
 import MobileMenu from "./MobileMenu";
 import DesktopMenu from "./DesktopMenu";
 import { CiSearch } from "react-icons/ci";
 import Link from "next/link";
+import { logout } from "@/Redux/authslice";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isVisible, setIsVisible] = useState(true);
+    // const {user,loading} = useAuth()
+    const token=useSelector(state=>state.auth.token)
+    console.log("token is there",token)
+    const dispatch=useDispatch()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -41,11 +49,18 @@ const Navbar = () => {
             document.body.style.overflow = "auto";
         };
     }, [isMenuOpen]);
+    
+    const handleLogout=async()=>{
+        await axios.post("http://localhost:3000/api/auth/logoutAuth", {}, { withCredentials: true });
+        dispatch(logout())
+        // window.location.reload()
+    }
+
 
     return (
         <>
             <div className="hidden md:block">
-                {/*<TopBar />*/}
+                {/* <TopBar /> */}
             </div>
 
             <header
@@ -68,7 +83,7 @@ const Navbar = () => {
                             <h1 className="text-4xl font-logo">Ascension</h1>
                         </Link>
                         <div className="flex items-center gap-4">
-                            <FiUser className="cursor-pointer text-lg" />
+                           {token? <FiLogOut onClick={handleLogout} className=" cursor-pointer text-lg" />  :<Link href="/login"><FiUser className="cursor-pointer text-lg" /></Link>}
                             <div className="relative">
                                 <FiShoppingBag className="cursor-pointer text-lg" />
                                 <span className="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>

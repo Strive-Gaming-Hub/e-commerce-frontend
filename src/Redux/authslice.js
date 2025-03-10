@@ -7,8 +7,8 @@ import storage from "redux-persist/lib/storage"
 
  const initialState={
     user:null,
-    token:Cookies.get("token")
-
+    token:Cookies.get("token"),
+    open:false
  }
 
  const authSlice=createSlice({
@@ -25,6 +25,9 @@ import storage from "redux-persist/lib/storage"
          state.token=null;
          Cookies.remove("token")
          storage.removeItem("persist:root")
+      },
+      itemDrawer:(state)=>{
+         state.open(!state.open)
       }
    }
  })

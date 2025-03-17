@@ -1,4 +1,4 @@
-import ClientLayout from "./clientLayout";
+import ClientLayout from "./ClientLayout";
 import { ColorSchemeScript,mantineHtmlProps } from "@mantine/core";
 import {Inter} from "next/font/google"
 
@@ -22,6 +22,7 @@ export default function RootLayout({ children }) {
     <body
         className={`${inter.variable} antialiased`}
     >
+      {/* <Checkouts/> */}
       <ClientLayout>{children}</ClientLayout>
     </body>
     </html>

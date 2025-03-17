@@ -8,24 +8,38 @@ if (!MONGO_URI) {
     );
 }
 
-let cached=global.mongoose
+let cached=global.mongoose 
 
 if(!cached){
     cached=global.mongoose={conn:null,promise:null}
 }
+async function dbConnect() {
 
-async function dbConnect(){
-    if(cached.conn){
-        return cached.conn
+    if (mongoose.connection.readyState >= 1) {
+        console.log("Already connected to MongoDB.");
+        return;
+      }
+
+    if (cached.conn) {
+        console.log(cached.conn);
+        return cached.conn;
     }
-    if(!cached.promise){
-        cached.promise=await mongoose.connect(MONGO_URI,{
-            useNewUrlParser: true,
-      useUnifiedTopology: true,
-        }).then((mongoose)=>  mongoose)
+
+    if (!cached.promise) {
+        mongoose.set("strictQuery", true);
+        cached.promise =  mongoose.connect(MONGO_URI, {
+            dbName: "ecommerce"
+        }).then((mongoose) => {
+            cached.conn = mongoose;
+            global.mongoose = cached;
+            return mongoose;
+        });
     }
-    cached.conn=await cached.promise
-    return cached.conn
+    
+    cached.conn = await cached.promise;
+
+    // console.log(cached.conn);
+    return cached.conn;
 }
 
 export default dbConnect

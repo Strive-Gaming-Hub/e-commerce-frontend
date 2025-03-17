@@ -4,27 +4,32 @@ import Link from "next/link"
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import {useDispatch,useSelector} from "react-redux"
-import { login } from "@/Redux/authslice";
+import { login, updateCart } from "@/Redux/authslice";
+// import { fetchCartOnLogin } from "@/pages/api/cart";
 
 export function Login() {
    const router=useRouter()
    const dispatch=useDispatch()
    const token=useSelector(state=> state.auth.token)
    const user=useSelector(state=>state.auth.user)
+   const items=useSelector(state=> state.itemsCart.items)
+   console.log(items,"items array")
+  //  const cart=useSelector((state)=>state.auth.cart)
   //  console.log(token,"and",user)
     const [formData, setFormData] = useState({
       email: "",
       password: "",
+      cart:[]
     });
   
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState(null);
     const [error, setError] = useState(null);
   
-    useEffect(() => {
-      console.log("Updated Token:", token);
-      console.log("Updated User:", user);
-    }, [token, user]);
+    // useEffect(() => {
+    //   console.log("Updated Token:", token);
+    //   console.log("Updated User:", user);
+    // }, [token, user]);
 
     const handleChange = (e) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -35,22 +40,30 @@ export function Login() {
       setLoading(true);
       setMessage(null);
       setError(null);
-  
+      
+       formData.cart=[...items]
+       console.log(formData,"data in the form")
       try {
-        const response = await axios.post("http://localhost:3000/api/login", formData,{
+        const response = await axios.post("http://localhost:3000/api/login",formData,{
           headers: {
             "Content-Type": "application/json",
           },
           withCredentials:true
         });
+
         // console.log(response,"response")
         // const data = await response.json();
          const userData=response.data
          console.log(userData,"userData")
         if (response.status==200) {
           setMessage("Login Successfull 🎉");
-          setFormData({ email: "", password: "" });
+          setFormData({ email: "", password: "",cart:items });
           dispatch(login({ user: userData.user, token: userData.token }));
+          console.log("cart data in user", userData.user.cart)
+          if (userData.user.cart) {
+            dispatch(updateCart(userData.user.cart));
+          }
+          // fetchCartOnLogin(userData.user.id,dispatch)
           console.log(token,"and",user)
           router.push("/")
         } else {

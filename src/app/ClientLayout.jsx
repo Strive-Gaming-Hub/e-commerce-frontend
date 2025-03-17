@@ -9,12 +9,11 @@ import { Provider, useDispatch, useSelector } from "react-redux";
 import {store,persistor} from "@/Redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import ItemsBar from "@/components/Items/ItemsBar";
-import { toggleBar } from "@/Redux/itemsCartSlice";
 
 
 function AppContent({ children }) {
   const open = useSelector((state) => state.itemsCart.open);
-  const dispatch=useDispatch()
+  // const dispatch=useDispatch()
   console.log("is the bar open",open)
   return (
     <>
@@ -23,7 +22,7 @@ function AppContent({ children }) {
       {children}    
       <Footer />
       </div>
-
+       
       {open && <ItemsBar />}
     </>
   );

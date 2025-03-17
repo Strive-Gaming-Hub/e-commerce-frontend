@@ -8,7 +8,6 @@ import storage from "redux-persist/lib/storage"
  const initialState={
     user:null,
     token:Cookies.get("token"),
-    open:false
  }
 
  const authSlice=createSlice({
@@ -18,6 +17,7 @@ import storage from "redux-persist/lib/storage"
       login:(state,action)=>{
          state.user=action.payload.user;
          state.token=action.payload.token;
+         state.cart=action.payload.user.cart
          Cookies.set("token",action.payload.token,{ expires: 7, secure: true })
       },
       logout:(state,action)=>{
@@ -26,13 +26,20 @@ import storage from "redux-persist/lib/storage"
          Cookies.remove("token")
          storage.removeItem("persist:root")
       },
-      itemDrawer:(state)=>{
-         state.open(!state.open)
+      updateCart:(state,action)=>{
+         state.user=action.payload
+      },
+      deleteCart:(state,action)=>{
+         if (state.user && state.user.cart) {
+            state.user.cart = state.user.cart.filter(
+              (item) => item.name !== action.payload
+            );
+          }
       }
    }
  })
 
- export const {login,logout} = authSlice.actions
+ export const {login,logout,updateCart,deleteCart} = authSlice.actions
 
  const persistConfig = {
    key: "auth",

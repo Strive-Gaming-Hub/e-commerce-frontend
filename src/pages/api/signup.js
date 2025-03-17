@@ -1,5 +1,6 @@
 import dbConnect from "@/lib/mongodb";
-import user from "@/models/user";
+// await dbConnect()
+import User from "@/models/user";
 
 export default async function signup(req,res) {
   await dbConnect();
@@ -8,12 +9,12 @@ export default async function signup(req,res) {
     try {
       const { firstName, lastName, email, password } = req.body;
 
-      const existingUser = await user.findOne({ email });
+      const existingUser = await User.findOne({ email });
       if (existingUser) {
         return res.status(400).json({ message: "User already exists" });
       }
 
-      const newUser = await user.create({
+      const newUser = await User.create({
         firstName,
         lastName,
         email,

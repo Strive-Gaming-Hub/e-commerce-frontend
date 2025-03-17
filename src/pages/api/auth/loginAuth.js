@@ -1,13 +1,13 @@
 import dbConnect from "@/lib/mongodb";
+// await dbConnect()
 import jwt from "jsonwebtoken"
 import {parse} from "cookie"
-import user from "@/models/user";
+import User from "@/models/user";
 
 export default async function loginAuth(req, res) {
     await dbConnect();
   
     try {
-      // ✅ Read the token from cookies
       const cookies = parse(req.headers.cookie || "");
       const token = cookies.token;
   
@@ -15,9 +15,8 @@ export default async function loginAuth(req, res) {
         return res.status(401).json({ message: "Unauthorized" });
       }
   
-      // ✅ Verify JWT Token
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      const existingUser = await user.findById(decoded.id).select("-password"); // Exclude password
+      const existingUser = await User.findById(decoded.id).select("-password"); 
   
       if (!existingUser) {
         return res.status(401).json({ message: "User not found" });

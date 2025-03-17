@@ -12,6 +12,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleBar } from "@/Redux/itemsCartSlice";
 
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -19,7 +20,8 @@ const Navbar = () => {
 //   const [open, setOpen] = useState(false);
   // const {user,loading} = useAuth()
   const token = useSelector((state) => state.auth.token);
-  console.log("token is there", token);
+  const items=useSelector(state=>state.itemsCart.items)
+  // console.log("token is there", token);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -112,7 +114,7 @@ const Navbar = () => {
                   onClick={()=>dispatch(toggleBar())}
                 />
                 <span className="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                  0
+                  {items.length}
                 </span>
               </div>
             </div>

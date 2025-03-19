@@ -477,6 +477,7 @@ const ItemsBar = () => {
               fontFamily: "roberto",
               fontSize: "0.8rem",
             }}
+            onClick={()=> router.push("/checkouts")}
           >
             CHECKOUT
           </button>

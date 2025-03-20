@@ -11,18 +11,53 @@ import { logout } from "@/Redux/authslice";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleBar } from "@/Redux/itemsCartSlice";
+import { jwtDecode } from "jwt-decode";
 
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+    const [userData, setUserData] = useState([]);
+  
 //   const [open, setOpen] = useState(false);
   // const {user,loading} = useAuth()
   const token = useSelector((state) => state.auth.token);
   const items=useSelector(state=>state.itemsCart.items)
   // console.log("token is there", token);
   const dispatch = useDispatch();
+
+  const getDataFromCart = async () => {
+    try {
+      if (token) {
+        const decode = jwtDecode(token);
+
+        const userId = decode?.id;
+
+        const response = await axios.get(`http://localhost:3000/api/cart`, {
+          params: { userId },
+        });
+        const mergedCart = [...items, ...response.data.cart].reduce((acc, item) => {
+          const existingItem = acc.find((i) => i.name === item.name);
+          if (!existingItem) {
+            acc.push(item);
+          }
+          return acc;
+        }, []);
+        setUserData(mergedCart);
+        console.log("response from GET API", response);
+      }
+    } catch (error) {
+      console.log("error occured in getting the data", error);
+    }
+  };
+
+  useEffect(() => {
+    if(token){
+      getDataFromCart();
+    // dispatch(clearCart())
+    }
+  }, [token]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -114,7 +149,7 @@ const Navbar = () => {
                   onClick={()=>dispatch(toggleBar())}
                 />
                 <span className="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-                  {items.length}
+                  {token? userData.length : items.length}
                 </span>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  clearCart,
   removeFromCart,
   toggleBar,
   updateQuantity,
@@ -34,8 +35,15 @@ const ItemsBar = () => {
         const response = await axios.get(`http://localhost:3000/api/cart`, {
           params: { userId },
         });
-        setUserData(response.data.cart);
-        console.log("response from GET API", response);
+        
+        dispatch(clearCart()); // Clear local cart before setting new data
+      setUserData(response.data.cart);
+
+      // Dispatch the new data to Redux
+      response.data.cart.forEach((item) => {
+        dispatch(addToCart(item)); 
+      });
+        // console.log("response from GET API", response);
       }
     } catch (error) {
       console.log("error occured in getting the data", error);
@@ -43,8 +51,10 @@ const ItemsBar = () => {
   };
 
   useEffect(() => {
-    getDataFromCart();
-  }, []);
+    if(token){
+      getDataFromCart();
+    }
+  }, [token]);
 
   const deleteCartItems = async (name) => {
     dispatch(removeFromCart(name));
@@ -91,7 +101,7 @@ const ItemsBar = () => {
 
         // const data = await response.json();
         if (response.status === 200) {
-          dispatch(updateCart(response.cart));
+          dispatch(updateCart(response.data.cart));
           setUserData((prevUserData) =>
             prevUserData.map((item) =>
               item.name === name ? { ...item, quantity: newQuantity } : item
@@ -127,7 +137,7 @@ const ItemsBar = () => {
           // const data = await response.json();
           console.log(response, "cart ka response");
           if (response.status === 200) {
-            dispatch(updateCart(response.cart));
+            dispatch(updateCart(response.data.cart));
             setUserData((prevUserData) =>
               prevUserData.map((item) =>
                 item.name === name ? { ...item, quantity: newQuantity } : item
@@ -213,7 +223,7 @@ const ItemsBar = () => {
             Cart
           </h3>
           <span className=" bg-black text-white text-xs rounded-full w-4 h-4 flex items-center justify-center p-3 ml-3">
-            {items.length}
+          {token? userData.length : items.length}
           </span>
           <button
             type="button"
@@ -327,7 +337,7 @@ const ItemsBar = () => {
           <div className="itemsSection w-full flex justify-around items-center flex-col h-[60vh] overflow-y-scroll scrollbar-hide">
             <div className="itemRows w-full">
               {userData.map((ele, index) => (
-                <div className="dataField h-[1.5rem] w-full flex content-around items-center px-3">
+                <div key={index} className="dataField h-[1.5rem] w-full flex content-around items-center px-3">
                   <div className="dataImage w-1/3">
                     <img src="/collections/2.webp" width="60%" height="80%" />
                   </div>

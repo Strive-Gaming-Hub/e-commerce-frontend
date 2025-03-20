@@ -100,3 +100,7 @@
     -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
     scrollbar-width: none; /* Hide scrollbar for Firefox */
   }
+
+.mainCart p{
+    font-family: "Blacker Pro Display Light";
+}

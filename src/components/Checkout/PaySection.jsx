@@ -1,25 +1,28 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiArrowDown, FiArrowUp } from "react-icons/fi";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { jwtDecode } from "jwt-decode";
 
-const PaySection = () => {
+const PaySection = ({userData}) => {
   const [arrow, setArrow] = useState(false);
   const [userEmail,setUserEmail]=useState("")
-  const user = useSelector((state) => state.auth.user);
+
+
 
   const token=useSelector(state=>state.auth.token)
-  if(token) {const decoded=jwtDecode(token)
-
-    setUserEmail(decoded.email)
-  }
+  useEffect(()=>{
+    if(token) {const decoded=jwtDecode(token)
+  
+      setUserEmail(decoded.email)
+    }
+  },[token])
     
-  console.log("is user there?", user);
+  // console.log("is user there?", user);
   return (
     <div className="paySectionLeft lg:w-[60%] m-5 gap-5">
-      {user ? (
+      {userData.length>0 ? (
         <div>
         <div
           className="account w-full flex justify-between items-center"
@@ -34,7 +37,7 @@ const PaySection = () => {
           </button>
         </div>
         <p style={{fontFamily:"LCT Picon Medium"}}>{userEmail}</p> 
-        {user && arrow ? <button style={{ color: "#1773b7",margin:"1.2rem 0" }}>Log Out</button> : undefined}
+        {userData && arrow ? <button style={{ color: "#1773b7",margin:"1.2rem 0" }}>Log Out</button> : undefined}
 
         </div>
       ) : (
